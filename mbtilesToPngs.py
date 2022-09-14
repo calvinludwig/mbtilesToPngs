@@ -25,14 +25,15 @@ def create_connection(db_file):
 
 def select_all_tiles(conn, tms, databaseName):
     cur = conn.cursor()
-    cur.execute("SELECT * FROM map")
+    cur.execute("SELECT * FROM tiles")
 
     rows = cur.fetchall()
     assets = {}
     print("Map count: " + str(len(rows)))
     print("TMS: " + str(tms))
     for row in rows:
-        image = get_image(conn, row[3])
+        # image = get_image(conn, row[3])
+        image = row[3]
 
         # for printing
         dir = str(row[0]) + "/" + str(row[1])
